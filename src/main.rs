@@ -1,3 +1,3 @@
-fn main() {
-    println!("Hello, world!");
-}
+use arc_cache::cache::*;
+
+fn main() {}

@@ -1,12 +1,12 @@
 use std::hash::Hash;
-use std::time::{ Duration, SystemTime };
+use std::time::{ Duration, Instant, SystemTime };
 
 pub struct Entry<K, V> {
     key: K,
     value: V,
 
-    created_at: SystemTime,
-    last_accessed: SystemTime,
+    created_at: Instant,
+    last_accessed: Instant,
 
     ttl: Duration,
 
@@ -15,7 +15,7 @@ pub struct Entry<K, V> {
 
 impl<K: Hash + Eq, V> Entry<K, V> {
     pub fn new(key: K, value: V, ttl: Duration) -> Self {
-        let now = SystemTime::now();
+        let now = Instant::now();
 
         Self {
             key,
